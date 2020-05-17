@@ -59,7 +59,7 @@ ui <- fluidPage(
   fluidRow(column(12, downloadButton("download_table", "Download table")), align = "right"), br()
 )
 
-server <- function(input, output) {
+server <- function(input, output, session) {
 
   output$data_sourced <- renderText({
     HTML(modified() %>% as.character())
@@ -227,4 +227,4 @@ output$download_table <- downloadHandler(
 }
 
 # Run the application
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server, session = session)
